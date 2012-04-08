@@ -18,6 +18,10 @@ group :assets do
   gem 'uglifier', '>= 1.2.4'
 end
 
+group :development do
+  gem 'rspec-rails', '~> 2.9.0'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -35,4 +39,8 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+
+  gem 'rspec-rails', '~> 2.9.0'
+  gem 'webrat', '~> 0.7.3'
+  gem 'spork', '~>0.9.0'
 end
