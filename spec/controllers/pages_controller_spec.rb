@@ -41,4 +41,18 @@ describe PagesController do
                 :content => "Hanabi|About")
     end
   end
+
+
+  describe "Get 'FAQ'" do
+    it "should be successful" do
+      get 'faq'
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get 'faq'
+      response.should have_selector("title",
+              :content => "Hanabi|FAQ")
+    end
+  end
 end
