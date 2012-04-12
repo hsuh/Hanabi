@@ -2,13 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 gem 'execjs'
 gem 'therubyracer'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,7 +13,8 @@ group :assets do
   gem 'uglifier', '>= 1.2.4'
 end
 
-group :development do
+group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.9.0'
   gem 'annotate', '2.4.1.beta1'
   gem 'guard'
@@ -28,29 +24,13 @@ group :development do
   gem 'guard-sass'
 end
 
-group :production do
-  gem 'pg', '0.12.2'
-end
-
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
 group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-
-  gem 'rspec-rails', '~> 2.9.0'
-  gem 'webrat', '~> 0.7.3'
+  gem 'capybara', '1.1.2'
   gem 'spork', '0.9.0'
+end
+
+group :production do
+  gem 'pg', '0.12.2'
 end
