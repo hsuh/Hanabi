@@ -1,8 +1,13 @@
 Hanabi::Application.routes.draw do
-  get "pages/home"
-  get "pages/contact"
-  get "pages/about"
-  get "pages/faq"
+
+  get "users/new"
+
+  root to: 'pages#home'
+  match '/about',   to: 'pages#about'
+  match '/contact',   to: 'pages#contact'
+  match '/faq', to: 'pages#faq'
+  match '/signup', to: 'users#new'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
