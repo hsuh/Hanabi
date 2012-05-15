@@ -2,30 +2,59 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
-   subject{ page }
+  subject{ page }
 
-   describe "Home page" do
+  shared_examples_for "all static pages" do
+    it{ should have_selector('h1', text: heading) }
+    it{ should have_selector('title', text: full_title(page_title))}
+  end
+
+  describe "Home page" do
     before {visit root_path}
-    it { should have_selector('h1', text: 'Hanabi') }
-    it { should have_selector('title', text: full_title('')) }
-    it { should_not have_selector('title', text: full_title("Home"))}
-   end
+    let(:heading) { 'Hanabi' }
+    let(:page_title) { '' }
 
-   describe "About page" do
+    it_should_behave_like "all static pages"
+    it { should_not have_selector('title', text: '| Home')}
+  end
+
+  describe "About page" do
     before {visit about_path}
-    it{ should have_selector('h1', text: 'About') }
-    it{ should have_selector('title', text: full_title('About')) }
-   end
+    let(:heading) { 'About' }
+    let(:page_title ) { 'About' }
 
-    describe "Contact page" do
-      before {visit contact_path}
-      it{ should have_selector('h1', text: 'Contact') }
-      it{ should have_selector('title', text: full_title('Contact')) }
-    end
+    it_should_behave_like "all static pages"
+  end
 
-    describe "FAQ page" do
-      before {visit faq_path}
-      it{ should have_selector('h1', text: 'FAQ') }
-      it { should have_selector('title', text: full_title('FAQ')) }
-    end
+  describe "Contact page" do
+    before {visit contact_path}
+    let(:heading) { 'Contact' }
+    let(:page_title) { 'Contact' }
+
+    it_should_behave_like "all static pages"
+  end
+
+  describe "FAQ page" do
+    before {visit faq_path}
+    let(:heading) { 'FAQ' }
+    let(:page_title) { 'FAQ' }
+
+    it_should_behave_like "all static pages"
+  end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link 'About'
+    page.should have_selector 'title', text: full_title('About')
+    click_link 'Contact'
+    page.should have_selector 'title', tex: full_title('Contact')
+    click_link 'FAQ'
+    page.should have_selector 'title', text: full_title('FAQ')
+    click_link 'Home'
+    page.should have_selector 'title', text: full_title('')
+    click_link 'Sign up now!'
+    page.should have_selector 'title', text: full_title('Sign up')
+    click_link 'Hanabi'
+    page.should have_selector 'title', text: full_title('')
+  end
 end
