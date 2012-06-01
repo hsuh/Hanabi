@@ -30,6 +30,8 @@ gem 'jquery-rails'
 group :test do
   gem 'capybara', '1.1.2'
   gem 'spork', '0.9.0'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner', '0.7.2'
 end
 
 group :production do
