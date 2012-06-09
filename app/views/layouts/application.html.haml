@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag "application", media: "all"
+    / Note used to be :media => "all" in Ruby 1.8
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = render 'layouts/shim'
+  %body
+    = render 'layouts/header'
+    %div.container
+      = yield
+      = render 'layouts/footer'
