@@ -12,6 +12,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.4'
+  gem 'haml', '>= 3.0.0'
+  gem 'haml-rails'
 end
 
 group :development, :test do
@@ -23,6 +25,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-annotate'
   gem 'guard-sass'
+  gem 'guard-cucumber'
 end
 
 gem 'jquery-rails'
